@@ -2,6 +2,12 @@
 if [ $# -gt 0 ] 
 then
     path=$1
+    if [ ! -d $path ]
+    then
+	echo "Directory not found"
+	return
+    fi
+
     numFiles=$(find $path \( ! -regex '.*/\..*' \) -type f -print | wc -l)
     totalFiles=$(find $path -type f -print | wc -l)
 else
