@@ -1,0 +1,16 @@
+#!/bin/bash
+if [ $# -gt 0 ] 
+then
+    path=$1
+    numFiles=$(find $path \( ! -regex '.*/\..*' \) -type f -print | wc -l)
+    totalFiles=$(find $path -type f -print | wc -l)
+else
+    numFiles=$(find . \( ! -regex '.*/\..*' \) -type f -print | wc -l)
+    totalFiles=$(find . -type f -print | wc -l)
+fi
+
+hiddenFiles=$(($totalFiles-$numFiles))
+
+echo "Total Files: $totalFiles" 
+echo "Total non-hidden files: $numFiles"
+echo "Total hidden files: $hiddenFiles"

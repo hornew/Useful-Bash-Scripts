@@ -1,0 +1,9 @@
+#!/bin/bash
+traverse=$1
+
+directory=$PWD
+for((i=0; i < traverse; i++))
+do
+    directory=$directory/..
+done
+cd $directory
